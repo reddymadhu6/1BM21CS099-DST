@@ -1,13 +1,12 @@
 #include <stdio.h>
-#define STACK_SIZE 5
-
-int st[10],top,item,i;
+#define Stack_size 5
+int top, item, st[10],i;
 top=-1;
 
 void push()
 {
-    if(top==STACK_SIZE-1)
-    printf("Stack overflow\n\n");
+    if (top==Stack_size-1)
+    printf("STACK OVERFLOW\n\n\n");
     else
     {
         top++;
@@ -19,48 +18,49 @@ int pop()
 {
     int del_item;
     if(top==-1)
-    printf("Stack underflow\n");
+    printf("STACK UNDERFLOW\n");
     else
     {
-        del_item=st[top];
+        del_item = st[top];
         top--;
         return del_item;
     }
 }
 
 void display()
-
 {
     if(top==-1)
-    printf("Stack is empty\n");
-
-for(i=0;i<=top;i++)
-printf("%d\t",st[i]);
+    printf("Stack empty. There is nothing to display\n");
+    
+    for(i=0;i<=top;i++)
+        printf(" %d ", st[i]);
 }
 
-void main()
+int main()
 {
-    int choice;
-   while(1)
-   {
-        printf("Enter the choice\n");
-       printf("1.Push\t2.pop\t3.Display\n");
-       
-       scanf("%d",&choice);
-    switch(choice)
+    int op;
+    while(1)
     {
-        case 1:printf("Enter the number\n");
-               scanf("%d",&item);
-               push();
-               break;
-               
-        case 2:pop();
-               break;
-            
-        case 3:display();
-               break;
+        printf("\nEnter the operation\n 1.PUSH  2. POP  3. DISPLAY\n");
+        scanf("%d", &op);
         
-        default:printf("Invalid input\n\n");
+        switch(op)
+        {
+            case 1: printf("Enter the number : ");
+                    scanf("%d", &item);
+                    push();
+                    break;
+                    
+            case 2: pop(); 
+                    break;
+                   
+            case 3: display();
+                    break;
+                    
+            default: printf("Invalid input\n\n");        
+                     break;   
+        }
     }
-   }
+    
+    return 0;
 }
